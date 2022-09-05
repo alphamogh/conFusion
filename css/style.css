@@ -5,7 +5,7 @@
 }
 
 .row-content {
-    padding: 20px 0px 20px 0px;
+    margin: 20px 20px 20px 20px;
 }
 
 .navbar-dark {
@@ -13,7 +13,7 @@
 }
 
 body {
-    padding:50px 0px 0px 0px;
+    padding: 50px 0px 0px 0px;
     z-index:0;
 }
 
