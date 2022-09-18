@@ -31,8 +31,7 @@
                         <li class="nav-item"><a class="nav-link" href="./contactus.html"><span class="fa fa-address-card fa-lg"></span> Contact</a></li>
                 </ul>
                 <span class="navbar-text">
-                    <a data-toggle="modal" data-target="#loginModal">
-                    <span class="fa fa-sign-in"></span> Login</a>
+                    <a id="loginButton"><span class="fa fa-sign-in"></span> Login</a>
                 </span>
             </div>
         </div>
@@ -75,12 +74,12 @@
         </div>
     </div>
 
-    <div id="reserveFormModal" class="modal fade" role="dialog">
+    <div id="reserveModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg" role="content">
             <!-- Reserve Form Modal content-->
             <div class="modal-content">
                 <div class="modal-header">                    
-                    <h3 class="card-header bg-warning text-white">Reserve a Table</h3>
+                    <h3 class="modal-title">Reserve a Table</h3>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
@@ -161,7 +160,7 @@
                     <img src="img/logo.png" class="img-fluid">
                 </div>
                 <div class="col-12 col-sm-3 align-self-center">
-                    <a type="button" class="btn btn-block btn-sm btn-warning" data-toggle="modal" data-target="#reserveFormModal">Reserve Table</a>
+                    <a id="reserveButton" type="button" class="btn btn-block btn-sm btn-warning"><h3>Reserve Table</h3></a>
                 </div>
             </div>
         </div>
@@ -216,10 +215,13 @@
                     <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
                         <span class="carousel-control-next-icon"></span>
                     </a>
+                    <button class="btn btn-danger btn-sm" id="carouselButton">
+                        <span id="carousel-button-icon" class="fa fa-pause"></span>
+                    </button>
                 </div>
             </div>
         </div>
-<br>
+
         <div class="row row-content align-items-center">
             <div class="col-12 col-sm-4 order-sm-last col-md-3">
                 <div class="col col-sm col-md">
@@ -286,7 +288,7 @@
 
     <footer class="footer">
         <div class="container">
-            <br>
+            
             <div class="row">             
                 <div class="col-4 offset-1 col-sm-2 col-xs-4">
                     <h5>Links</h5>
@@ -331,7 +333,30 @@
 <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
 <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-
+<script>
+    $(document).ready(function(){
+            $("#loginButton").click(function(){
+                $('#loginModal').modal('show')
+            });
+            $("#reserveButton").click(function(){
+                $('#reserveModal').modal('show')
+            });
+            $("#mycarousel").carousel( { interval: 1000 } );
+            $("#carouselButton").click(function(){
+                if ($("#carouselButton").children("span").hasClass('fa-pause')) {
+                    $("#mycarousel").carousel('pause');
+                    $("#carouselButton").children("span").removeClass('fa-pause');
+                    $("#carouselButton").children("span").addClass('fa-play');
+                }
+                else if ($("#carouselButton").children("span").hasClass('fa-play')){
+                    $("#mycarousel").carousel('cycle');
+                    $("#carouselButton").children("span").removeClass('fa-play');
+                    $("#carouselButton").children("span").addClass('fa-pause');                    
+                }
+            });
+    });
+    
+</script>
 </body>
 
 </html>
